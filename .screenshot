@@ -1,0 +1,35 @@
+#---------------------------------------
+screenshot(){
+    echo "01 - eyewitness"
+    echo "02 - webscreenshot"
+}
+
+
+
+#---------------------------------------
+eyewitness(){
+    cd ~/tools/EyeWitness*
+    if [ ! -z $1 ] ; then 
+            sudo python EyeWitness.py --all-protocols --single $1 --threads 10 -d ./reports/$1 --active-scan
+    else
+        echo "https://github.com/FortyNorthSecurity/EyeWitness.git"
+        echo "eyewitness <DOMAIN>"
+        sudo python EyeWitness.py -h
+    fi
+}
+
+
+
+#---------------------------------------
+webscreenshot(){
+    cd ~/tools/webscreenshot
+    if [ ! -z $1 ] ; then 
+            xvfb-run python webscreenshot.py -v google.com
+    else
+        echo "https://github.com/maaaaz/webscreenshot.git"
+        echo "webscreenshot <DOMAIN>"
+        python webscreenshot.py -h
+    fi
+}
+
+

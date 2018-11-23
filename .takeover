@@ -1,0 +1,30 @@
+subdomain(){
+    echo "01 - subover"
+    echo "02 - subjack" 
+}
+
+#---------------------------------------
+subover(){
+    if [ ! -z $1 ] ; then
+        SubOver -l subdomains.txt -a -t 10 -v -https
+    else
+        echo "https://github.com/Ice3man543/SubOver.git"
+        echo "subover <SUBDOMAIN_LIST>"
+        SubOver -h
+    fi
+}
+    
+
+
+
+#---------------------------------------
+subjack(){
+    if [ ! -z $1 ] ; then
+        subjack -w $1 -t 10 -timeout 30 -o ~/tools/subjack/$1.json -ssl
+    else
+        echo "https://github.com/haccer/subjack.git"
+        echo "subjack <SUBDOMAIN_LIST>"
+        subjack -h
+    fi
+}
+

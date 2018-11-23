@@ -1,0 +1,57 @@
+#---------------------------------------
+scanner(){
+    echo "01 - masscan"
+    echo "02 - nmap"
+    echo "03 - wp-scan"
+    echo "04 - sqlmap"
+}
+
+
+
+#---------------------------------------
+masscan(){
+    cd ~/tools/masscan*
+    if [ ! -z "$1" ] && [ ! -z "$2" ] ; then
+        sudo ./bin/masscan $1 -p0-65535 --max-rate 10000 -oJ $2 
+    else
+        echo "https://github.com/robertdavidgraham/masscan.git"
+        echo "masscan <IP_RANGE> <FILE_NAME> "
+        sudo ./bin/masscan -h
+    fi
+}
+
+
+
+#---------------------------------------
+n-map(){
+    echo "Setup options for nmap"
+}
+
+
+
+#---------------------------------------
+wp-scan(){
+    cd ~/tools/wpscan*
+    if [ ! -z $1 ] ; then   
+        wpscan --url $1
+    else
+        echo "https://github.com/wpscanteam/wpscan.git"
+        echo "wp-scan <DOMAIN>"
+        wpscan --help
+    fi
+}
+
+
+
+#---------------------------------------
+sqlmap(){
+    cd ~/tools/sqlmap*
+    if [ ! -z $1 ] ; then
+        python sqlmap.py -u $1 
+    else
+        echo "https://github.com/sqlmapproject/sqlmap.git"
+        echo "For more options, use python sqlmap.py -hh"
+        echo "sqlmap <DOMAIN>"
+        python sqlmap.py -h
+    fi
+}

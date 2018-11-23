@@ -1,0 +1,53 @@
+
+#---------------------------------------
+cert-subdomain(){
+    echo "01 - certspotter"
+    echo "02 - crtsh"
+    echo "03 - certnmap"
+    echo "04 - certbrute"
+    echo "05 - massdns-certlog"
+}
+
+
+
+
+#---------------------------------------
+certspotter(){
+    curl -s https://certspotter.com/api/v0/certs\?domain\=$1 | jq '.[].dns_names[]' | sed 's/\"//g' | sed 's/\*\.//g' | sort -u | grep $1
+} #h/t Michiel Prins
+
+
+
+#---------------------------------------
+crtsh(){
+    curl -s https://crt.sh/?q=%.$1  | sed 's/<\/\?[^>]\+>//g' | grep $1
+}
+
+
+
+#---------------------------------------
+certnmap(){
+    curl https://certspotter.com/api/v0/certs\?domain\=$1 | jq '.[].dns_names[]' | sed 's/\"//g' | sed 's/\*\.//g' | sort -u | grep $1  | nmap -T5 -Pn -sS -i - $1
+} #h/t Jobert Abma
+
+
+
+#---------------------------------------
+certbrute(){
+    cd ~/tools/dirsearch
+    cat $1.txt | while read line; do python3 dirsearch.py -e . -u "https://$line"; done
+}
+
+
+
+#---------------------------------------
+massdns-certlog(){
+    cd ~/tools/massdns
+    if [ ! -z $1 ] ; then
+        python ./scripts/ct.py $1 | ./bin/massdns -r lists/resolvers.txt -t A -o S -w results.txt
+    else
+        echo "https://github.com/blechschmidt/massdns.git"
+        echo "massdns-certlog <DOMAIN>"
+        ./bin/massdns -h
+    fi
+}

@@ -1,0 +1,65 @@
+#---------------------------------------
+github(){
+    echo "01 - gitrob"
+    echo "02 - gitas-user"
+    echo "03 - gitas-org"
+    echo "04 - gitas-repo"
+}
+
+
+
+#---------------------------------------
+gitrob(){
+    cd ~/tools/gitrob
+        if [ ! -z $1 ] ; then
+            ./gitrob -save ~/tools/gitrob/reports/$1.json $1
+    else
+        echo "https://github.com/michenriksen/gitrob"
+        echo "gitrob <DOMAIN>
+        gitrob -h
+    fi
+}
+
+
+
+
+
+#---------------------------------------
+gitas-help(){
+        echo "docker ps -a"
+        echo "docker cp <container-id>:/root/results.txt ."
+        echo "docker run --rm -it abhartiya/tools_gitallsecrets --help"
+}
+
+
+gitas-user(){
+    if [ ! -z $1 ] ; then
+           docker run -it abhartiya/tools_gitallsecrets -token=$GITHUBTOKEN -user=$1 -threads=20
+    else
+        echo "https://github.com/anshumanbh/git-all-secrets"
+        echo "gitas-user <USERNAME>"
+        gitas-help
+    fi
+}
+
+
+gitas-org(){
+    if [ ! -z $1 ] ; then
+           docker run -it abhartiya/tools_gitallsecrets -token=$GITHUBTOKEN -org=$1 -threads=20
+    else
+        echo "https://github.com/anshumanbh/git-all-secrets"
+        echo "gitas-org <ORG_NAME>"
+        gitas-help
+    fi
+}
+
+
+gitas-repo(){
+    if [ ! -z $1 ] ; then
+           docker run -it abhartiya/tools_gitallsecrets -token=$GITHUBTOKEN -repoURL=$1 -threads=20
+    else
+        echo "https://github.com/anshumanbh/git-all-secrets"
+        echo "gitas-repo <REPO_URL>"
+        gitas-help
+    fi
+}

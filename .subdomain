@@ -1,0 +1,114 @@
+#---------------------------------------
+subdomain(){
+    echo "01 - a-mass"
+    echo "02 - sublister"
+    echo "03 - knock"
+    echo "04 - subfinder"
+    echo "05 - massdns-small"
+    echo "06 - massdns-big"
+
+}
+
+
+
+#---------------------------------------
+a-mass(){
+    if [ ! -z $1 ] ; then
+        amass -v -ip -brute -whois -d $1 -json ~/amass/$1
+    else
+        echo "https://github.com/OWASP/Amass.git"
+        echo "a-mass <DOMAIN>"
+        amass -h
+    fi
+}
+
+
+
+#---------------------------------------
+sublister(){
+    cd ~/tools/Sublist3r*
+    if [ ! -z $1 ] ; then
+        python sublist3r.py -v -b -t 10 -e google,yahoo,virustotal,ping -o $1 -d $1 
+    else
+        echo "https://github.com/aboul3la/Sublist3r.git"
+        echo "sublister <DOMAIN>"
+        python sublist3r.py -h
+    fi
+}
+
+
+
+#---------------------------------------
+knock(){
+    cd ~/tools/knock/knockpy
+    if [ ! -z $1 ] ; then
+        wordlist=$HOME/tools/SecLists/Discovery/DNS/subdomains-top1mil-110000.txt
+        python knockpy.py -j -w $wordlist  $1 
+    else
+        echo "https://github.com/guelfoweb/knock.git"
+        echo "knock <DOMAIN>"
+        knockpy -h
+    fi
+}
+
+
+
+
+#---------------------------------------
+subfinder(){
+    if [ ! -z $1 ] ; then
+        wordlist=$HOME/tools/SecLists/Discovery/DNS/subdomains-top1mil-110000.txt
+        subfinder -d $1 -b -t 10 -o result.json -oT -nW -oD ~/tools/subfinder/$1 -r 8.8.8.8,8.8.4.4,1.1.1.1 -w wordlist -v
+    else
+        echo "https://github.com/subfinder/subfinder.git"
+        echo "subfinder <DOMAIN>"
+        subfinder -h
+    fi
+}
+
+
+
+#---------------------------------------
+massdns-small(){
+    cd ~/tools/massdns
+    if [ ! -z $1 ] ; then
+        python ./scripts/subbrute.py lists/names.txt $1 | \
+        ./bin/massdns -r ./lists/resolvers.txt -s 100 -t A --verify-ip -o S -w $1.txt
+    else
+        echo "https://github.com/blechschmidt/massdns.git"
+        echo "massdns-small <DOMAIN>"
+        ./bin/massdns -h
+    fi
+}
+
+massdns-big(){
+    cd ~/tools/massdns
+    if [ ! -z $1 ] ; then
+         python ./scripts/subbrute.py $HOME/tools/SecLists/Discovery/DNS/jhaddix-dns.txt $1 | \
+        ./bin/massdns -r ./lists/resolvers.txt -s 100 -t A --verify-ip -o S -w $1.txt
+    else
+        echo "https://github.com/blechschmidt/massdns.git"
+        echo "massdns-big <DOMAIN>"
+        ./bin/massdns -h
+    fi
+}
+
+
+
+
+
+
+
+
+
+
+#---------------------------------------
+#hostilesub(){
+#    cd ~/tools/HostileSubBruteforcer
+#   echo "https://github.com/nahamsec/HostileSubBruteforcer.git"
+#    ruby sub_brute.rb --fast   
+#}
+
+
+
+

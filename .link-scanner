@@ -1,0 +1,54 @@
+#---------------------------------------
+link-scanner(){
+    echo "01 - linkfinder"
+    echo "02 - dirsearch"
+    echo "03 - jsparser --- jsparser-stop"
+
+}
+
+
+
+#---------------------------------------
+linkfinder(){
+    cd ~/tools/LinkFinder*
+    if [ ! -z $1 ] ; then 
+        python linkfinder.py -i https://$1 -o $1.html
+    else
+        echo "https://github.com/GerbenJavado/LinkFinder.git"
+        echo "linkfinder <DOMAIN>"
+        python linkfinder.py -h
+
+    fi
+}
+
+
+
+#---------------------------------------
+dirsearch(){
+    cd ~/tools/dirsearch*
+    if [ ! -z $1 ] ; then 
+        python3 dirsearch.py -e . -u $1
+    else
+        echo "https://github.com/maurosoria/dirsearch.git"
+        echo "dirsearch <DOMAIN>"
+        python3 dirsearch.py -h
+    fi
+}
+
+
+
+#---------------------------------------
+jsparser(){
+    cd ~/tools/JSParser*
+    echo "https://github.com/nahamsec/JSParser.git"
+    echo "Please visit http://localhost:8008"
+    python handler.py
+}
+
+jsparser-stop(){
+    port=$(lsof -t -i:8008)
+    echo $port
+    if [ ! -z "$port" ] &&  [ "$port" != "" ] ; then
+        sudo kill -9 $port
+    fi
+}

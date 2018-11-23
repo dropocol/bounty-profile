@@ -1,0 +1,41 @@
+#---------------------------------------
+bucket(){
+    echo "01 - bucketeer"
+    echo "02 - lazys3"
+    echo "03 - bucketstream"
+}
+
+
+
+#---------------------------------------
+bucketeer(){
+    cd ~/tools/teh_s3_bucketeers
+    if [ ! -z $1 ] ; then
+        ./bucketeer.sh $1
+    else
+        echo "https://github.com/tomdev/teh_s3_bucketeers.git"
+        echo "bucketeer \"<target> <target>\""
+    fi
+}
+
+
+
+#---------------------------------------
+lazys3(){
+    cd ~/tools/lazys3
+    if [ ! -z $1 ] ; then
+        ruby lazys3.rb $1
+    else
+        echo "https://github.com/nahamsec/lazys3.git"
+        echo "lazys3 <COMPANY>"
+    fi
+}
+
+
+
+#---------------------------------------
+bucketstream(){
+    cd ~/tools/bucket-stream
+    echo "https://github.com/eth0izzle/bucket-stream.git"
+    python bucket-stream.py --only-interesting --skip-lets-encrypt --log
+}

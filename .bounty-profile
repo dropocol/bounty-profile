@@ -1,0 +1,60 @@
+source ./.aws-cli
+source ./.bucket
+source ./.cert-subdomain
+source ./.github
+source ./.link-scanner
+source ./.scanner
+source ./.screenshot
+source ./.subdomain
+source ./.takeover
+source ./.vhost
+
+
+
+#---------------------------------------
+bounty-tools(){
+    echo "virtualhost"
+    echo "subdomain"
+    echo "cert-subdomain"
+    echo "bucket"
+    echo "screenshot"
+    echo "github"
+    echo "scanner"
+    echo "link-scanner"
+    echo "takeover"
+    echo "aws-cli"
+    echo "cert-subdomain"
+}
+
+
+#---------------------------------------
+bt(){
+  cd ~/zk-scripts/bounty-tools
+  pull -i
+}
+
+
+
+#----- misc -----
+
+hgrip(){ 
+    history | grep $1
+}
+
+ipinfo(){
+    curl http://ipinfo.io/$1
+}
+
+
+
+#------ Tools ------
+burp(){
+    cd ~/tools/Burpsuite
+	java -jar burp-loader-keygen.jar
+	cd ~
+}
+
+
+ncx(){
+    nc -l -n -vv -p $1 -k
+}

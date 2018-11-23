@@ -1,0 +1,33 @@
+#---------------------------------------
+virtualhost(){
+    echo "01 - vhost"
+    echo "02 - vhostscan"
+}
+
+
+
+#---------------------------------------
+vhost(){
+    cd ~/tools/virtual-host-discovery
+    if [ ! -z "$1" ] && [ ! -z "$2" ] ; then
+        ruby scan.rb --ip=$1 --host=$2
+    else
+        echo "https://github.com/jobertabma/virtual-host-discovery"
+        echo "vhost <IP Address> <Web Address>"
+    fi
+}
+
+
+
+#---------------------------------------
+vhostscan(){
+    cd ~/tools/VHostScan
+    if [ ! -z "$1" ] && [ ! -z "$2" ] ; then
+        VHostScan -b $1 -t $2 --ssl --waf --fuzzy-logic -v -oN $1
+    else
+        echo "https://github.com/codingo/VHostScan"
+        echo "vhostscan <Web Address> <IP Address>"
+    fi
+}
+
+

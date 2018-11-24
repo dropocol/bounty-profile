@@ -15,7 +15,7 @@ gitrob(){
             ./gitrob -save ~/tools/gitrob/reports/$1.json $1
     else
         echo "https://github.com/michenriksen/gitrob"
-        echo "gitrob <DOMAIN>
+        echo "gitrob <DOMAIN>"
         gitrob -h
     fi
 }

@@ -33,6 +33,10 @@ bt(){
   pull -i
 }
 
+bp(){
+  cd ~/zk-scripts/bounty-profile
+}
+
 
 
 #----- misc -----

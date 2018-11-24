@@ -31,10 +31,13 @@ bounty-tools(){
 bt(){
   cd ~/zk-scripts/bounty-tools
   pull -i
+  src
 }
 
 bp(){
   cd ~/zk-scripts/bounty-profile
+  pull
+  src
 }
 
 

@@ -1,3 +1,4 @@
+cd ~/zk-scripts/bounty-profile
 source ./.aws-cli
 source ./.bucket
 source ./.cert-subdomain

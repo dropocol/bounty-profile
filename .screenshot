@@ -1,23 +1,8 @@
 #---------------------------------------
 screenshot(){
-    echo "01 - eyewitness"
-    echo "02 - webscreenshot"
+    echo "01 - webscreenshot"
+    echo "02 - aquatone"
 }
-
-
-
-#---------------------------------------
-eyewitness(){
-    cd ~/tools/EyeWitness*
-    if [ ! -z $1 ] ; then 
-            sudo python EyeWitness.py --all-protocols --single $1 --threads 10 -d ./reports/$1 --active-scan
-    else
-        echo "https://github.com/FortyNorthSecurity/EyeWitness.git"
-        echo "eyewitness <DOMAIN>"
-        sudo python EyeWitness.py -h
-    fi
-}
-
 
 
 #---------------------------------------
@@ -31,5 +16,40 @@ webscreenshot(){
         python webscreenshot.py -h
     fi
 }
+
+
+
+#---------------------------------------
+aquatone(){
+    cd ~/tools/aquatone
+    if [[ "$1" =~ ".txt" ]]; then
+        cat $1 | ./aquatone 
+    if [ ! -z $1 ] ; then 
+       echo $1 | ./aquatone 
+    else
+        echo "https://github.com/michenriksen/aquatone.git"
+        echo "aquatone <DOMAIN>  or  aquatone <DOMAIN.txt>"
+        ./aquatone -h
+    fi
+}
+
+
+}
+
+
+
+#---------------------------------------
+#eyewitness(){
+#    cd ~/tools/EyeWitness*
+#    if [ ! -z $1 ] ; then 
+#            sudo python EyeWitness.py --all-protocols --single $1 --threads 10 -d ./reports/$1 --active-scan
+#    else
+#        echo "https://github.com/FortyNorthSecurity/EyeWitness.git"
+#        echo "eyewitness <DOMAIN>"
+#        sudo python EyeWitness.py -h
+#    fi
+#}
+
+
 
 

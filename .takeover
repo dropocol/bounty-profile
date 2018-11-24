@@ -1,4 +1,4 @@
-subdomain(){
+takeover(){
     echo "01 - subover"
     echo "02 - subjack" 
 }

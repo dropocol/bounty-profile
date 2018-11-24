@@ -14,17 +14,17 @@ source ./.vhost
 
 #---------------------------------------
 bounty-tools(){
-    echo "  virtualhost"
-    echo "  subdomain"
-    echo "  cert-subdomain"
-    echo "  bucket"
-    echo "  screenshot"
-    echo "  github"
-    echo "  scanner"
-    echo "  link-scanner"
-    echo "  takeover"
-    echo "  aws-cli"
-    echo "  cert-subdomain"
+    echo "01 - virtualhost"
+    echo "02 - subdomain"
+    echo "03 - cert-subdomain"
+    echo "04 - bucket"
+    echo "05 - screenshot"
+    echo "06 - github"
+    echo "07 - scanner"
+    echo "08 - link-scanner"
+    echo "09 - takeover"
+    echo "10 - aws-cli"
+    echo "11 - cert-subdomain"
 }
 
 

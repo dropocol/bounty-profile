@@ -24,7 +24,7 @@ aquatone(){
     cd ~/tools/aquatone
     if [[ "$1" =~ ".txt" ]]; then
         cat $1 | ./aquatone 
-    if [ ! -z $1 ] ; then 
+    elif [ ! -z $1 ] ; then 
        echo $1 | ./aquatone 
     else
         echo "https://github.com/michenriksen/aquatone.git"

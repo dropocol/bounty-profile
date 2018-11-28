@@ -3,9 +3,10 @@ subdomain(){
     echo "01 - a-mass"
     echo "02 - sublister"
     echo "03 - knock"
-    echo "04 - sub-finder"
-    echo "05 - massdns-small"
-    echo "06 - massdns-big"
+    echo "04 - subfinder-all"
+    echo "05 - subfinder-domains"
+    echo "06 - massdns-small"
+    echo "07 - massdns-big"
 
 }
 
@@ -55,7 +56,7 @@ knock(){
 
 
 #---------------------------------------
-sub-finder(){
+subfinder-all(){
     if [ ! -z $1 ] ; then
         wordlist=$HOME/tools/SecLists/Discovery/DNS/subdomains-top1mil-110000.txt
         subfinder -d $1 -b -t 10 -o result.json -oT -nW -oD ~/tools/subfinder/$1 -r 8.8.8.8,8.8.4.4,1.1.1.1 -w $wordlist -v
@@ -66,6 +67,18 @@ sub-finder(){
     fi
 }
 
+
+#---------------------------------------
+subfinder-domains(){
+    if [ ! -z $1 ] ; then
+        wordlist=$HOME/tools/SecLists/Discovery/DNS/subdomains-top1mil-110000.txt
+        subfinder -d $1 -t 10 -o result.json -oT -nW -oD ~/tools/subfinder/$1 -v
+    else
+        echo "https://github.com/subfinder/subfinder.git"
+        echo "sub-finder <DOMAIN>"
+        subfinder -h
+    fi
+}
 
 
 #---------------------------------------

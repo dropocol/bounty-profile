@@ -1,6 +1,6 @@
 takeover(){
     echo "01 - subover"
-    echo "02 - subjack" 
+    echo "02 - sub-jack" 
 }
 
 #---------------------------------------
@@ -18,7 +18,7 @@ subover(){
 
 
 #---------------------------------------
-subjack(){
+sub-jack(){
     if [ ! -z $1 ] ; then
         subjack -w $1 -t 10 -timeout 30 -o ~/tools/subjack/$1.json -ssl
     else

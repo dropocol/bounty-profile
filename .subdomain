@@ -58,7 +58,7 @@ knock(){
 sub-finder(){
     if [ ! -z $1 ] ; then
         wordlist=$HOME/tools/SecLists/Discovery/DNS/subdomains-top1mil-110000.txt
-        subfinder -d $1 -b -t 10 -o result.json -oT -nW -oD ~/tools/subfinder/$1 -r 8.8.8.8,8.8.4.4,1.1.1.1 -w wordlist -v
+        subfinder -d $1 -b -t 10 -o result.json -oT -nW -oD ~/tools/subfinder/$1 -r 8.8.8.8,8.8.4.4,1.1.1.1 -w $wordlist -v
     else
         echo "https://github.com/subfinder/subfinder.git"
         echo "sub-finder <DOMAIN>"
@@ -92,12 +92,6 @@ massdns-big(){
         ./bin/massdns -h
     fi
 }
-
-
-
-
-
-
 
 
 

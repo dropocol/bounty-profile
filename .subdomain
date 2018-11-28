@@ -59,7 +59,7 @@ knock(){
 subfinder-all(){
     if [ ! -z $1 ] ; then
         wordlist=$HOME/tools/SecLists/Discovery/DNS/subdomains-top1mil-110000.txt
-        subfinder -d $1 -b -t 10 -o result.json -oT -nW -oD ~/tools/subfinder/$1 -r 8.8.8.8,8.8.4.4,1.1.1.1 -w $wordlist -v
+        subfinder -d $1 -v -b -t 10 -o $1.json -oT -nW -oD ~/tools/subfinder/results -r 8.8.8.8,8.8.4.4,1.1.1.1 -w $wordlist
     else
         echo "https://github.com/subfinder/subfinder.git"
         echo "sub-finder <DOMAIN>"
@@ -72,13 +72,14 @@ subfinder-all(){
 subfinder-domains(){
     if [ ! -z $1 ] ; then
         wordlist=$HOME/tools/SecLists/Discovery/DNS/subdomains-top1mil-110000.txt
-        subfinder -d $1 -t 10 -o result.json -oT -nW -oD ~/tools/subfinder/$1 -v
+        subfinder -d $1 -v -t 10 -o $1.json -oT -nW -oD ~/tools/subfinder/results
     else
         echo "https://github.com/subfinder/subfinder.git"
         echo "sub-finder <DOMAIN>"
         subfinder -h
     fi
 }
+
 
 
 #---------------------------------------

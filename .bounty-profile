@@ -9,7 +9,7 @@ source ./.screenshot
 source ./.subdomain
 source ./.takeover
 source ./.vhost
-
+cd ~
 
 
 #---------------------------------------

@@ -27,7 +27,10 @@ linkfinder(){
 dirsearch(){
     cd ~/tools/dirsearch*
     if [ ! -z $1 ] ; then 
+
+        #python3 dirsearch.py -e php,asp,aspx,jsp,html,zip,jar,sql -u $line
         python3 dirsearch.py -e . -u $1
+        
     else
         echo "https://github.com/maurosoria/dirsearch.git"
         echo "dirsearch <DOMAIN>"

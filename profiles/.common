@@ -1,0 +1,23 @@
+#----- misc -----
+
+hgrip(){ 
+    history | grep $1
+}
+
+ipinfo(){
+    curl http://ipinfo.io/$1
+}
+
+
+
+#------ Tools ------
+burp(){
+    cd ~/tools/Burpsuite
+	java -jar burp-loader-keygen.jar
+	cd ~
+}
+
+
+ncx(){
+    nc -l -n -vv -p $1 -k
+}

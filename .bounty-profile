@@ -1,15 +1,15 @@
-cd ~/zk-scripts/bounty-profile
-source ./.aws-cli
-source ./.bucket
-source ./.cert-subdomain
-source ./.github
-source ./.link-scanner
-source ./.scanner
-source ./.screenshot
-source ./.subdomain
-source ./.takeover
-source ./.vhost
-cd ~
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+source $DIR/profiles/.aws-cli
+source $DIR/profiles/.bucket
+source $DIR/profiles/.cert-subdomain
+source $DIR/profiles/.github
+source $DIR/profiles/.link-scanner
+source $DIR/profiles/.scanner
+source $DIR/profiles/.screenshot
+source $DIR/profiles/.subdomain
+source $DIR/profiles/.takeover
+source $DIR/profiles/.vhost
+
 
 
 #---------------------------------------

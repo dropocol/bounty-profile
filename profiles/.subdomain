@@ -7,7 +7,6 @@ subdomain(){
     echo "05 - subfinder-domains"
     echo "06 - massdns-small"
     echo "07 - massdns-big"
-
 }
 
 
@@ -15,7 +14,7 @@ subdomain(){
 #---------------------------------------
 a-mass(){
     if [ ! -z $1 ] ; then
-        amass -v -ip -brute -whois -d $1 -json ~/amass/$1
+        amass -v -ip -src -brute -whois -d $1 -json ~/amass/$1
     else
         echo "https://github.com/OWASP/Amass.git"
         echo "a-mass <DOMAIN>"
@@ -59,7 +58,7 @@ knock(){
 subfinder-all(){
     if [ ! -z $1 ] ; then
         wordlist=$HOME/tools/SecLists/Discovery/DNS/subdomains-top1mil-110000.txt
-        subfinder -d $1 -v -b -t 10 -o $1.json -oT -nW -oD ~/tools/subfinder/results -r 8.8.8.8,8.8.4.4,1.1.1.1 -w $wordlist
+        subfinder -d $1 -v -b -t 10 -o $HOME/tools/subfinder/$1.json -oT -nW -oD ~/tools/subfinder -r 8.8.8.8,8.8.4.4,1.1.1.1 -w $wordlist
     else
         echo "https://github.com/subfinder/subfinder.git"
         echo "sub-finder <DOMAIN>"
@@ -72,14 +71,13 @@ subfinder-all(){
 subfinder-domains(){
     if [ ! -z $1 ] ; then
         wordlist=$HOME/tools/SecLists/Discovery/DNS/subdomains-top1mil-110000.txt
-        subfinder -d $1 -v -t 10 -o $1.json -oT -nW -oD ~/tools/subfinder/results
+        subfinder -d $1 -v -t 10 -o $HOME/tools/subfinder/$1.json -oT -nW -oD ~/tools/subfinder
     else
         echo "https://github.com/subfinder/subfinder.git"
         echo "sub-finder <DOMAIN>"
         subfinder -h
     fi
 }
-
 
 
 #---------------------------------------

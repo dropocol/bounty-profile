@@ -34,7 +34,7 @@ gitas-help(){
 
 gitas-user(){
     if [ ! -z $1 ] ; then
-           docker run -it abhartiya/tools_gitallsecrets -token=$GITHUBTOKEN -user=$1 -threads=20
+           docker run -it abhartiya/tools_gitallsecrets -token=$GITHUB_ACCESS_TOKEN -user=$1 -threads=20
     else
         echo "https://github.com/anshumanbh/git-all-secrets"
         echo "gitas-user <USERNAME>"
@@ -45,7 +45,7 @@ gitas-user(){
 
 gitas-org(){
     if [ ! -z $1 ] ; then
-           docker run -it abhartiya/tools_gitallsecrets -token=$GITHUBTOKEN -org=$1 -threads=20
+           docker run -it abhartiya/tools_gitallsecrets -token=$GITHUB_ACCESS_TOKEN -org=$1 -threads=20
     else
         echo "https://github.com/anshumanbh/git-all-secrets"
         echo "gitas-org <ORG_NAME>"
@@ -56,7 +56,7 @@ gitas-org(){
 
 gitas-repo(){
     if [ ! -z $1 ] ; then
-           docker run -it abhartiya/tools_gitallsecrets -token=$GITHUBTOKEN -repoURL=$1 -threads=20
+           docker run -it abhartiya/tools_gitallsecrets -token=$GITHUB_ACCESS_TOKEN -repoURL=$1 -threads=20
     else
         echo "https://github.com/anshumanbh/git-all-secrets"
         echo "gitas-repo <REPO_URL>"

@@ -1,9 +1,14 @@
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+DIR=""
+MAIN_OS=""
+
 if [ "$(uname)" == "Darwin" ]; then
-    DIR=$(cd "$(dirname "$0")"; pwd)
+  DIR=$(cd "$(dirname "$0")"; pwd)
+  MAIN_OS="OSX"
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
   DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+  MAIN_OS="Linux"
 fi
+
 
 source $DIR/profiles/.aws-cli
 source $DIR/profiles/.bucket
@@ -34,6 +39,33 @@ bounty-tools(){
     echo "10 - aws-cli"
     echo "11 - cert-subdomain"
 }
+
+
+#--------------------------------------
+pull(){
+  if [ "$1" = "-i" ]; then
+    git stash
+    git stash clear
+    git pull
+    chmod +x install.sh
+    ./install.sh
+  else
+    git stash
+    git stash clear
+    git pull
+  fi
+}
+
+
+#--------------------------------------
+src(){
+  if [ "$MAIN_OS" == "OSX" ]; then
+  . ~/.zshrc
+  elif [ "$MAIN_OS" == "Linux" ]; then
+  . ~/.bashrc
+  fi
+}
+
 
 
 #---------------------------------------

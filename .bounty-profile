@@ -1,4 +1,10 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+if [ "$(uname)" == "Darwin" ]; then
+    DIR=$(cd "$(dirname "$0")"; pwd)
+elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+  DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+fi
+
 source $DIR/profiles/.aws-cli
 source $DIR/profiles/.bucket
 source $DIR/profiles/.cert-subdomain

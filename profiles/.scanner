@@ -55,3 +55,20 @@ sqlmap(){
         python sqlmap.py -h
     fi
 }
+
+
+
+#---------------------------------------
+
+cloudflair(){
+    cd ~/tools/cloudflair
+    if [ ! -z $1 ] ; then
+        python cloudflair.py $1
+    else
+        echo "https://github.com/christophetd/cloudflair.git"
+        echo "cloudflair <DOMAIN>"
+        echo "python cloudflair.py --help"
+    fi
+}
+
+

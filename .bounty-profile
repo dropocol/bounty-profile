@@ -1,27 +1,27 @@
-DIR=""
+BP_DIR=""
 MAIN_OS=""
 
 if [ "$(uname)" == "Darwin" ]; then
-  DIR=$(cd "$(dirname "$0")"; pwd)
+  BP_DIR=$(cd "$(dirname "$0")"; pwd)
   MAIN_OS="OSX"
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
-  DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+  BP_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
   MAIN_OS="Linux"
 fi
 
 
-source $DIR/profiles/.aws-cli
-source $DIR/profiles/.bucket
-source $DIR/profiles/.cert-subdomain
-source $DIR/profiles/.github
-source $DIR/profiles/.link-scanner
-source $DIR/profiles/.scanner
-source $DIR/profiles/.screenshot
-source $DIR/profiles/.subdomain
-source $DIR/profiles/.takeover
-source $DIR/profiles/.vhost
-source $DIR/profiles/.keys
-source $DIR/profiles/.common
+source $BP_DIR/profiles/.aws-cli
+source $BP_DIR/profiles/.bucket
+source $BP_DIR/profiles/.cert-subdomain
+source $BP_DIR/profiles/.github
+source $BP_DIR/profiles/.link-scanner
+source $BP_DIR/profiles/.scanner
+source $BP_DIR/profiles/.screenshot
+source $BP_DIR/profiles/.subdomain
+source $BP_DIR/profiles/.takeover
+source $BP_DIR/profiles/.vhost
+source $BP_DIR/profiles/.keys
+source $BP_DIR/profiles/.common
 
 
 

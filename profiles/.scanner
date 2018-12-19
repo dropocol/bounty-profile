@@ -23,7 +23,7 @@ masscan(){
 
 
 #---------------------------------------
-n-map(){
+nmap-help(){
     echo "Setup options for nmap"
 }
 

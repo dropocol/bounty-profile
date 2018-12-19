@@ -8,13 +8,28 @@ virtualhost(){
 
 #---------------------------------------
 vhost(){
-    cd ~/tools/virtual-host-discovery
-    if [ ! -z "$1" ] && [ ! -z "$2" ] ; then
-        ruby scan.rb --ip=$1 --host=$2
+
+    if [ ! -d ~/tools/virtual-host-discovery ]; then
+    
     else
-        echo "https://github.com/jobertabma/virtual-host-discovery"
-        echo "vhost <IP Address> <Web Address>"
+
     fi
+
+    if [ ! -d ~/tools/virtual-host-discovery ]; then
+        echo "Not Installed. Please visit the link to install it"
+        echo "https://github.com/jobertabma/virtual-host-discovery"
+    else
+        cd ~/tools/virtual-host-discovery
+        if [ ! -z "$1" ] && [ ! -z "$2" ] ; then
+            ruby scan.rb --ip=$1 --host=$2
+        else
+            echo "https://github.com/jobertabma/virtual-host-discovery"
+            echo "vhost <IP Address> <Web Address>"
+        fi
+    fi
+
+
+
 }
 
 

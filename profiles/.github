@@ -10,14 +10,21 @@ github(){
 
 #---------------------------------------
 gitrob(){
-    cd ~/tools/gitrob
-        if [ ! -z $1 ] ; then
-            ./gitrob -save ~/tools/gitrob/reports/$1.json $1
+
+    if [ ! -d ~/tools/gitrob ]; then
+            echo "Not Installed. Please visit the link to install it"
+            echo "https://github.com/michenriksen/gitrob"
     else
-        echo "https://github.com/michenriksen/gitrob"
-        echo "gitrob <DOMAIN>"
-        gitrob -h
+        cd ~/tools/gitrob
+            if [ ! -z $1 ] ; then
+                ./gitrob -save ~/tools/gitrob/reports/$1.json $1
+        else
+            echo "https://github.com/michenriksen/gitrob"
+            echo "gitrob <DOMAIN>"
+            gitrob -h
+        fi       
     fi
+
 }
 
 

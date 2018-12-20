@@ -34,20 +34,36 @@ certnmap(){
 
 #---------------------------------------
 certbrute(){
-    cd ~/tools/dirsearch
-    cat $1.txt | while read line; do python3 dirsearch.py -e . -u "https://$line"; done
+
+    if [ ! -d ~/tools/dirsearch ]; then
+        echo "Not Installed. Please visit the link to install it"
+        echo "https://github.com/maurosoria/dirsearch.git"
+    else
+        cd ~/tools/dirsearch
+        cat $1.txt | while read line; do python3 dirsearch.py -e . -u "https://$line"; done
+    fi
+
+
 }
 
 
 
 #---------------------------------------
 massdns-certlog(){
-    cd ~/tools/massdns
-    if [ ! -z $1 ] ; then
-        python ./scripts/ct.py $1 | ./bin/massdns -r lists/resolvers.txt -t A -o S -w results.txt
-    else
+
+    if [ ! -d ~/tools/massdns ]; then
+        echo "Not Installed. Please visit the link to install it"
         echo "https://github.com/blechschmidt/massdns.git"
-        echo "massdns-certlog <DOMAIN>"
-        ./bin/massdns -h
+    else
+        cd ~/tools/massdns
+        if [ ! -z $1 ] ; then
+            python ./scripts/ct.py $1 | ./bin/massdns -r lists/resolvers.txt -t A -o S -w results.txt
+        else
+            echo "https://github.com/blechschmidt/massdns.git"
+            echo "massdns-certlog <DOMAIN>"
+            ./bin/massdns -h
+        fi   
     fi
+
+
 }

@@ -7,30 +7,44 @@ screenshot(){
 
 #---------------------------------------
 webscreenshot(){
-    cd ~/tools/webscreenshot
-    if [ ! -z $1 ] ; then 
-            xvfb-run python webscreenshot.py -v google.com
-    else
+
+    if [ ! -d ~/tools/webscreenshot ]; then
+        echo "Not Installed. Please visit the link to install it"
         echo "https://github.com/maaaaz/webscreenshot.git"
-        echo "webscreenshot <DOMAIN>"
-        python webscreenshot.py -h
+    else
+        cd ~/tools/webscreenshot
+        if [ ! -z $1 ] ; then 
+                xvfb-run python webscreenshot.py -v google.com
+        else
+            echo "https://github.com/maaaaz/webscreenshot.git"
+            echo "webscreenshot <DOMAIN>"
+            python webscreenshot.py -h
+        fi
     fi
+
 }
 
 
 
 #---------------------------------------
 aquatone(){
-    cd ~/tools/aquatone
-    if [[ "$1" =~ ".txt" ]]; then
-        cat $1 | ./aquatone 
-    elif [ ! -z $1 ] ; then 
-       echo $1 | ./aquatone 
+
+    if [ ! -d ~/tools/aquatone ]; then
+            echo "Not Installed. Please visit the link to install it"
+            echo "https://github.com/michenriksen/aquatone.git"
     else
-        echo "https://github.com/michenriksen/aquatone.git"
-        echo "aquatone <DOMAIN>  or  aquatone <DOMAIN.txt>"
-        ./aquatone -h
+        cd ~/tools/aquatone
+        if [[ "$1" =~ ".txt" ]]; then
+            cat $1 | ./aquatone 
+        elif [ ! -z $1 ] ; then 
+        echo $1 | ./aquatone -out "~/tools/aquatone/reports/$domain" -resolution "800,600" -screenshot-timeout 60000
+        else
+            echo "https://github.com/michenriksen/aquatone.git"
+            echo "aquatone <DOMAIN>  or  aquatone <DOMAIN.txt>"
+            ./aquatone -h
+        fi  
     fi
+
 }
 
 

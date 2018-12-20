@@ -40,8 +40,8 @@ keys(){
     echo -e "\n"
 
     echo "${GREEN}CloudFlair${NC}"
-    export CENSYS_API_ID=x01x02x03
-    export CENSYS_API_SECRET=x01x02x03
+    echo "export CENSYS_API_ID=x01x02x03"
+    echo "export CENSYS_API_SECRET=x01x02x03"
     echo -e "\n"
 
 

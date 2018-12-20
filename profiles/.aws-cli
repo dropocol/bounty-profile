@@ -8,12 +8,31 @@ aws-cli(){
 
 #---------------------------------------
 s3ls(){
-    aws s3 ls s3://$1
+    if [ ! -d ~/.aws ]; then
+        echo "Not Installed. Please check brew for awscli installation"
+    else
+        if [ ! -z $1 ] ; then
+            aws s3 ls s3://$1 
+        else
+            echo "https://docs.aws.amazon.com/cli/index.html#lang/en_us"
+            echo "s3ls <BUCKET>"
+        fi  
+    fi
+
 }
 
 
 
 #---------------------------------------
 s3cp(){
-    aws s3 cp s3://$1 
+    if [ ! -d ~/.aws ]; then
+        echo "Not Installed. Please check brew for awscli installation"
+    else
+        if [ ! -z $1 ] ; then
+            aws s3 cp s3://$1  
+        else
+            echo "https://docs.aws.amazon.com/cli/index.html#lang/en_us"
+            echo "s3cp <BUCKET>"
+        fi  
+    fi
 }

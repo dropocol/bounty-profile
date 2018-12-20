@@ -1,7 +1,7 @@
 #---------------------------------------
 scanner(){
     echo "01 - masscan"
-    echo "02 - nmap"
+    echo "02 - n-map"
     echo "03 - wp-scan"
     echo "04 - sqlmap"
 }
@@ -10,20 +10,27 @@ scanner(){
 
 #---------------------------------------
 masscan(){
-    cd ~/tools/masscan*
-    if [ ! -z "$1" ] && [ ! -z "$2" ] ; then
-        sudo ./bin/masscan $1 -p0-65535 --max-rate 10000 -oJ $2 
+
+    if [ ! -d ~/tools/masscan* ]; then
+            echo "Not Installed. Please visit the link to install it"
+            echo "https://github.com/robertdavidgraham/masscan.git"
     else
-        echo "https://github.com/robertdavidgraham/masscan.git"
-        echo "masscan <IP_RANGE> <FILE_NAME> "
-        sudo ./bin/masscan -h
+        cd ~/tools/masscan*
+        if [ ! -z "$1" ] && [ ! -z "$2" ] ; then
+            sudo ./bin/masscan $1 -p0-65535 --max-rate 20000 -oJ ./reports/$2.json
+        else
+            echo "https://github.com/robertdavidgraham/masscan.git"
+            echo "masscan <IP_RANGE> <FILE_NAME> "
+            sudo ./bin/masscan -h
+        fi 
     fi
+
 }
 
 
 
 #---------------------------------------
-nmap-help(){
+n-map(){
     echo "Setup options for nmap"
 }
 
@@ -31,29 +38,44 @@ nmap-help(){
 
 #---------------------------------------
 wp-scan(){
-    cd ~/tools/wpscan*
-    if [ ! -z $1 ] ; then   
-        wpscan --url $1
+
+    if [ ! -d ~/tools/wpscan* ]; then
+            echo "Not Installed. Please visit the link to install it"
+            echo "https://github.com/wpscanteam/wpscan.git"
     else
-        echo "https://github.com/wpscanteam/wpscan.git"
-        echo "wp-scan <DOMAIN>"
-        wpscan --help
+        cd ~/tools/wpscan*
+        if [ ! -z $1 ] ; then   
+            wpscan --url $1 --rua
+        else
+            echo "https://github.com/wpscanteam/wpscan.git"
+            echo "wpscan <DOMAIN>"
+            wpscan --help
+        fi       
     fi
+
+
 }
 
 
 
 #---------------------------------------
 sqlmap(){
-    cd ~/tools/sqlmap*
-    if [ ! -z $1 ] ; then
-        python sqlmap.py -u $1 
-    else
+
+    if [ ! -d ~/tools/sqlmap* ]; then
+        echo "Not Installed. Please visit the link to install it"
         echo "https://github.com/sqlmapproject/sqlmap.git"
-        echo "For more options, use python sqlmap.py -hh"
-        echo "sqlmap <DOMAIN>"
-        python sqlmap.py -h
+    else
+        cd ~/tools/sqlmap*
+        if [ ! -z $1 ] ; then
+            python sqlmap.py -u $1 
+        else
+            echo "https://github.com/sqlmapproject/sqlmap.git"
+            echo "For more options, use python sqlmap.py -hh"
+            echo "sqlmap <DOMAIN>"
+            python sqlmap.py -h
+        fi
     fi
+
 }
 
 
@@ -61,14 +83,21 @@ sqlmap(){
 #---------------------------------------
 
 cloudflair(){
-    cd ~/tools/cloudflair
-    if [ ! -z $1 ] ; then
-        python cloudflair.py $1
+
+    if [ ! -d ~/tools/virtual-host-discovery ]; then
+            echo "Not Installed. Please visit the link to install it"
+            echo "https://github.com/christophetd/cloudflair.git"
     else
-        echo "https://github.com/christophetd/cloudflair.git"
-        echo "cloudflair <DOMAIN>"
-        echo "python cloudflair.py --help"
+        cd ~/tools/cloudflair
+        if [ ! -z $1 ] ; then
+            python cloudflair.py $1
+        else
+            echo "https://github.com/christophetd/cloudflair.git"
+            echo "cloudflair <DOMAIN>"
+            echo "python cloudflair.py --help"
+        fi     
     fi
+
 }
 
 

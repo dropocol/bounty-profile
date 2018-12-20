@@ -12,9 +12,14 @@ ipinfo(){
 
 #------ Tools ------
 burp(){
-    cd ~/tools/Burpsuite
-	java -jar burp-loader-keygen.jar
-	cd ~
+    if [ ! -d ~/tools/Burpsuite ]; then
+        echo "Not Installed"
+    else
+        cd ~/tools/Burpsuite
+        java -jar burp-loader-keygen.jar
+        cd ~
+    fi
+
 }
 
 

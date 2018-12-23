@@ -1,10 +1,10 @@
 BP_DIR=""
 MAIN_OS=""
 echo "$(uname)"
-if [ "$(uname)" == "Darwin" ]; then
+if [ "$(uname)" = "Darwin" ] ; then
   BP_DIR=$(cd "$(dirname "$0")"; pwd)
   MAIN_OS="OSX"
-elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+elif [ "$(expr substr $(uname -s) 1 5)" = "Linux" ]; then
   BP_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
   MAIN_OS="Linux"
 fi
@@ -59,9 +59,9 @@ pull(){
 
 #--------------------------------------
 src(){
-  if [ "$MAIN_OS" == "OSX" ]; then
+  if [ "$MAIN_OS" = "OSX" ]; then
   . ~/.zshrc
-  elif [ "$MAIN_OS" == "Linux" ]; then
+  elif [ "$MAIN_OS" = "Linux" ]; then
   . ~/.bashrc
   fi
 }

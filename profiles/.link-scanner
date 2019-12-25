@@ -41,7 +41,10 @@ dirsearch(){
         if [ ! -z $1 ] ; then 
 
             #python3 dirsearch.py -e php,asp,aspx,jsp,html,zip,jar,sql -u $line
-            python3 dirsearch.py -e . -u $1
+            #python3 dirsearch.py -e * -t 8 -u asystent.allegro.pl
+
+            python3 dirsearch.py -e . -u $1 -t 8 --plain-text-report 
+
             
         else
             echo "https://github.com/maurosoria/dirsearch.git"

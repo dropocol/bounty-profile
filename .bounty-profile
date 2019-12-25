@@ -1,6 +1,5 @@
 BP_DIR=""
 MAIN_OS=""
-echo "$(uname)"
 if [ "$(uname)" = "Darwin" ] ; then
   BP_DIR=$(cd "$(dirname "$0")"; pwd)
   MAIN_OS="OSX"
